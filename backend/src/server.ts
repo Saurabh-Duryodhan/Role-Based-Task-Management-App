@@ -1,7 +1,10 @@
 import express, { Request, Response } from 'express';
+import { configDotenv } from 'dotenv'
+
+configDotenv()
 
 const app = express();
-const PORT = 3000;
+const PORT: string | number = process.env.PORT || 3000;
 
 app.use(express.json());
 
