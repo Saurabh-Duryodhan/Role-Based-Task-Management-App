@@ -10,5 +10,6 @@ export const AdminAccess = (req: Request, res: Response, next: NextFunction) => 
     if (role === "admin") {
         return next()
     }
+    
     res.status(403).json({ error: "Access Denied" })
 }
