@@ -206,9 +206,10 @@ export class AuthService {
         return authHeader.split(' ')[1]
     }
 
-    verifyToken = async (token: string): Promise<JWT_PAYLOAD> => {
+    verifyToken = (token: string): JWT_PAYLOAD => {
         try {
-            return jwt.verify(token, this.JWT_SECRET_KEY) as JWT_PAYLOAD
+            const resp = jwt.verify(token, this.JWT_SECRET_KEY) as JWT_PAYLOAD
+            return resp
         } catch (error) {
             if (error instanceof jwt.TokenExpiredError) {
                 throw new Error("Token expired")
